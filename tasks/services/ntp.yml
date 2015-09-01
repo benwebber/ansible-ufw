@@ -1,0 +1,4 @@
+---
+- include: ../_service.yml
+    port=123
+    proto=udp
