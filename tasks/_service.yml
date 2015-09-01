@@ -1,0 +1,12 @@
+---
+# This task is not meant to be called directly. Instead, see the service
+# definitions in services/.
+- name: "{{ (delete is defined and delete == true) | ternary('close', 'open') }} {{ proto | default('tcp') }}/{{ port }} {{ service }}"
+  ufw:
+    proto={{ proto | default('tcp') }}
+    port={{ port }}
+    rule={{ allow | default(ufw_service_default_rule) }}
+    direction={{ direction | default(ufw_service_default_direction) }}
+    interface={{ item }}
+    delete={{ delete | default(omit) }}
+  with_items: interfaces | default(ufw_interfaces)

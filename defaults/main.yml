@@ -1,0 +1,12 @@
+---
+ufw_default_direction: incoming
+ufw_default_policy: deny
+ufw_default_state: enabled
+# "off" is quoted to prevent interpretation as a boolean.
+ufw_logging: 'off'
+ufw_open_ssh: true
+ufw_service_default_direction: in
+ufw_service_default_rule: allow
+
+interfaces:
+  - eth0

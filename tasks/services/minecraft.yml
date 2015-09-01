@@ -1,0 +1,3 @@
+---
+- include: ../_service.yml
+    port={{ port | default(25565) }}

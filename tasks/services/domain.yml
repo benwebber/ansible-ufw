@@ -1,0 +1,5 @@
+---
+# tcp/53 is used for zone transfers.
+- include: ../_service.yml
+    proto={{ proto | default('udp') }}
+    port=53

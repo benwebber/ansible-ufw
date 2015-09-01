@@ -1,0 +1,4 @@
+---
+- include: ../_service.yml
+    port={{ port | default(1194) }}
+    proto="{{ proto | default('udp') }}"

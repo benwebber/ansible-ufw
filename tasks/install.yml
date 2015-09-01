@@ -1,0 +1,19 @@
+---
+- name: install ufw
+  apt:
+    name=ufw
+
+- name: configure ufw logging
+  ufw:
+    logging={{ ufw_logging }}
+
+- name: set base ufw policy
+  ufw:
+    direction={{ ufw_default_direction }}
+    policy={{ ufw_default_policy }}
+    state={{ ufw_default_state }}
+
+- include: _service.yml
+    service=ssh
+    port=22
+  when: ufw_open_ssh

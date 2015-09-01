@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Ben Webber
+  description: High-level, service-based interface for configuring UFW
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+      - squeeze
+      - wheezy
+      - jessie
+      - stretch
+  categories:
+    - networking
+    - system

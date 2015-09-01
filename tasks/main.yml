@@ -1,0 +1,4 @@
+---
+# If the role is called with no arguments, configure the base policy.
+# Otherwise, configure the specified service.
+- include: "{{ (service is defined) | ternary('configure', 'install') }}.yml"
