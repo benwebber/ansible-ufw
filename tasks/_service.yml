@@ -1,7 +1,7 @@
 ---
 # This task is not meant to be called directly. Instead, see the service
 # definitions in services/.
-- name: "{{ (delete is defined and delete == true) | ternary('close', 'open') }} {{ proto | default('tcp') }}/{{ port }} {{ service }}"
+- name: "{{ (delete is defined and delete == true) | ternary('close', 'open') }} {{ port }}/{{ proto | default('tcp') }} {{ service }}"
   ufw:
     proto={{ proto | default('tcp') }}
     port={{ port }}
