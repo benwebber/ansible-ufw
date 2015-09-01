@@ -38,10 +38,10 @@ ok: [redis1.example.org]
 TASK: [ufw | set base ufw policy] *********************************************
 ok: [redis1.example.org]
 
-TASK: [ufw | open tcp/22 ssh] *************************************************
+TASK: [ufw | open 22/tcp ssh] *************************************************
 ok: [redis1.example.org] => (item=eth0)
 
-TASK: [ufw | open tcp/6379 redis] *********************************************
+TASK: [ufw | open 6379/tcp redis] *********************************************
 ok: [redis1.example.org] => (item=eth1)
 ```
 
