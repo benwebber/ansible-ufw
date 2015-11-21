@@ -9,6 +9,14 @@
 * Ansible 1.9+
 * Debian, Ubuntu, or other distribution providing the UFW package
 
+## Installation
+
+Install from [Ansible Galaxy](https://galaxy.ansible.com/detail#/role/4939).
+
+```
+ansible-galaxy install benwebber.ufw
+```
+
 ## Usage
 
 **ansible-ufw** provides atomic service firewall definitions that allow you to build a host's firewall iteratively.
@@ -17,10 +25,10 @@ For example, to allow Redis connections on a private interface:
 
 ```yaml
 - roles:
-  # Install UFW and configure the base policy. Include ufw with no parameters.
-  - ufw
+  # Install UFW and configure the base policy. Include `benwebber.ufw` with no parameters.
+  - benwebber.ufw
   # Open Redis (6379/tcp) on eth1.
-  - role: ufw
+  - role: benwebber.ufw
     service: redis
     interfaces:
       - eth1
@@ -29,19 +37,19 @@ For example, to allow Redis connections on a private interface:
 When you apply the roles above, you'll see the following output:
 
 ```
-TASK: [ufw | install ufw] *****************************************************
+TASK: [benwebber.ufw | install ufw] *****************************************************
 ok: [redis1.example.org]
 
-TASK: [ufw | configure ufw logging] *******************************************
+TASK: [benwebber.ufw | configure ufw logging] *******************************************
 ok: [redis1.example.org]
 
-TASK: [ufw | set base ufw policy] *********************************************
+TASK: [benwebber.ufw | set base ufw policy] *********************************************
 ok: [redis1.example.org]
 
-TASK: [ufw | open 22/tcp ssh] *************************************************
+TASK: [benwebber.ufw | open 22/tcp ssh] *************************************************
 ok: [redis1.example.org] => (item=eth0)
 
-TASK: [ufw | open 6379/tcp redis] *********************************************
+TASK: [benwebber.ufw | open 6379/tcp redis] *********************************************
 ok: [redis1.example.org] => (item=eth1)
 ```
 
@@ -65,15 +73,15 @@ Install UFW and configure the base policy.
 
 ```yaml
 - roles:
-    - ufw
+    - benwebber.ufw
 ```
 
 Allow SSH traffic on the default interface (`eth0`). This task is part of the base policy.
 
 ```yaml
 - roles:
-  - ufw
-  - role: ufw
+  - benwebber.ufw
+  - role: benwebber.ufw
     service: ssh
 ```
 
@@ -81,8 +89,8 @@ Allow HTTP traffic on multiple interfaces.
 
 ```yaml
 - roles:
-  - ufw
-  - role: ufw
+  - benwebber.ufw
+  - role: benwebber.ufw
     service: http
     interfaces:
       - eth0
@@ -93,8 +101,8 @@ Deny DNS traffic on the default interface (`eth0`).
 
 ```yaml
 - roles:
-  - ufw
-  - role: ufw
+  - benwebber.ufw
+  - role: benwebber.ufw
     service: domain
     delete: true
 ```
@@ -103,8 +111,8 @@ Create a custom rule using the special `local` service.
 
 ```
 - roles:
-  - ufw
-  - role: ufw
+  - benwebber.ufw
+  - role: benwebber.ufw
     service: local
     port: 24816
     proto: udp
