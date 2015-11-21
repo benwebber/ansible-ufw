@@ -109,7 +109,7 @@ Deny DNS traffic on the default interface (`eth0`).
 
 Create a custom rule using the special `local` service.
 
-```
+```yaml
 - roles:
   - benwebber.ufw
   - role: benwebber.ufw
